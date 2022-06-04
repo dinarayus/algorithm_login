@@ -1,3 +1,18 @@
+def check_login_email(string):
+    """
+    Если result == True, то удовлетворяет
+    Если result == False, то не удовлетворяет
+    :param string:
+    :return: result = {True, False}
+    """
+    items = ['*', '\\', '|', '/', '-', ',', ':', ';', "'", '@', '&', ')', '(', '{', '}', '[', ']', '=', '?']
+    result = True
+
+    for item in items:
+        if item in string:
+            result = False
+            break
+    return result
 
 def exit_program(string):
     if string == 'exit':
@@ -6,33 +21,56 @@ def exit_program(string):
         return True
 
 def registr_func():
-    pass
+    run = True
+    
+    while run:
+        print(" enter your login: ")
+        login = input()
+        print("enter your email:")
+        email = input()
+        print("enter your password:")
+        password = input()
+    
+        if email in emails or '@' not in email:
+            print("Вы ввели не почту или Уже сущесnвует пользователь с такой почтой")
+            if login not in logins:
+                if check_login_email(login):
+                    pass
+            else:
+                print("Этот логин уже занят.Введите другой логин")
+        else:
+            print("Уже сущесnвует пользователь с такой почтой")
 
-def login_func():
-    print(" enter your login: ")
-    login = input()
-    print("enter your password:")
-    password = input()
+def login_func(string):
+    run = True
 
-    if login in logins:
-        index = logins.index(login)
-        if password == passwords[index]:
-            print("Вы вошли в систему")
-            print(emails[index])
+    while run:
+        print(" enter your login: ")
+        login = input()
+        print("enter your password:")
+        password = input()
+
+        if login in logins:
+            index = logins.index(login)
+            if password == passwords[index]:
+                print("Вы вошли в систему")
+                print(emails[index])
+            else:
+                print("Логин или пароль неверный")
+                print("Хотите повторить[yes] или выйти[exit]?")
+                string = input()
+                run = exit_program(string)
         else:
             print("Логин или пароль неверный")
             print("Хотите повторить[yes] или выйти[exit]?")
             string = input()
-            return exit_program(string)
-    else:
-        print("Логин или пароль неверный")
-        print("Хотите повторить[yes] или выйти[exit]?")
-        string = input()
-        return exit_program(string)
+            run = exit_program(string)
+
+    return run  # run == False
 
 
 if __name__ == '__main__':
-
+    wrong_elements = ['`', '~', '!', '#', '№',  '%', '^', '&', '*', '(',  ')', '-', '_', "'", ',', '?', '"', '|', ';', ':', '+']
     commands = ['L', 'R', 'exit']
     logins = ['dinarayus', "kaseke", "azik"]
     passwords = ["12345", "67890", "qwerty"]
@@ -53,7 +91,7 @@ if __name__ == '__main__':
 
         if string in commands:
             if string == 'L':
-                run = login_func()
+                run = login_func(string)
             elif string == 'R':
                 pass
             else:

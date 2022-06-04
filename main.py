@@ -14,11 +14,13 @@ def check_login_email(string):
             break
     return result
 
+
 def exit_program(string):
     if string == 'exit':
         return False
     else:
         return True
+
 
 def registr_func(string):
     run1 = True

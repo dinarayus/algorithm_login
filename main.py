@@ -41,16 +41,16 @@ def registr_func(string):
                         logins.append(login)
                         passwords.append(password)
                         emails.append(email)
-                        print('Вы успешно зарегистрировались')
+                        print('You have successfully registered!')
                         run1 = False
                     else:
-                        print('Неверный формат почты')
+                        print(' the wrong mail format')
                 else:
-                    print('Неверный формат логина')
+                    print('the wrong login format')
             else:
-                print("Этот логин уже занят.Введите другой логин")
+                print("this login is already taken. Enter another mail.")
         else:
-            print("Почта уже занятия или не подходит")
+            print("this email already belongs to the account")
     return True
 
 def login_func(string):
@@ -65,20 +65,20 @@ def login_func(string):
         if login in logins:
             index = logins.index(login)
             if password == passwords[index]:
-                print("Вы вошли в систему")
+                print("you're logged in")
                 print(emails[index])
-                print("Хотите выйти[exit]?")
+                print("want to exit[exit]?")
                 string = input()
                 run1 = exit_program(string)
 
             else:
-                print("Логин или пароль неверный")
-                print("Хотите повторить[yes] или выйти[exit]?")
+                print("Username or password is incorrect")
+                print("want to try again[yes] or exit[exit]?")
                 string = input()
                 run1 = exit_program(string)
         else:
-            print("Логин или пароль неверный")
-            print("Хотите повторить[yes] или выйти[exit]?")
+            print("Username or password is incorrect")
+            print("want to try again[yes] or exit[exit]?")
             string = input()
             run1 = exit_program(string)
 
@@ -95,7 +95,7 @@ if __name__ == '__main__':
 ## сделать запускался терминал, и выводилось приветсвие и команда выход: через ввод q
     run = True
 
-    print("Здраствуйте! Вы вошли в программу")
+    print("Hello! You have entered the program")
 
     while run:
 
